@@ -9,9 +9,6 @@ public class ThirdPersonController : MonoBehaviour
     public float gravity = -24f;
     public float jumpHeight = 1.6f;
 
-    [Header("Jump Settings")]
-    public float jumpDelay = 1f;
-
     [Header("Ground Check")]
     public LayerMask groundLayers = ~0;     // set to "Default, Ground" etc.
     public float groundCheckRadius = 0.2f;  // foot probe radius
@@ -33,10 +30,8 @@ public class ThirdPersonController : MonoBehaviour
     float yaw, pitch;
 
     // Jump state
-    bool jumpQueued = false;
-    float jumpTimer = 0f;
-    bool jumpArmed = true;
-    bool jumpHeld = false;
+    bool jumpHeld = false;     // tracks if Space is currently held
+    bool jumpArmed = true;     // re-armed when grounded and key released
 
     // cached grounded state
     bool groundedNow, groundedPrev;
@@ -87,27 +82,24 @@ public class ThirdPersonController : MonoBehaviour
         groundedPrev = groundedNow;
         groundedNow = FastGrounded(); // our own immediate ground probe
 
+        // snap to ground for solid contact
         if (groundedNow && velocity.y < 0f)
-            velocity.y = -4f; // stronger stick to ground to snap contact
+            velocity.y = -4f;
 
-        // queue jump (don’t lift yet)
-        if (groundedNow && press && !jumpQueued && jumpArmed)
+        // instant jump only when grounded, no delay
+        if (groundedNow && press && jumpArmed)
         {
-            jumpQueued = true;
-            jumpTimer = Mathf.Max(0f, jumpDelay);
+            velocity.y = Mathf.Sqrt(2f * jumpHeight * -gravity);
             if (animator) { animator.ResetTrigger(jumpTrigger); animator.SetTrigger(jumpTrigger); }
-            jumpArmed = false;
+            jumpArmed = false; // disarm to block double jump until re-armed
         }
 
         // apply gravity and vertical move
         velocity.y += gravity * Time.deltaTime;
         CollisionFlags flags = cc.Move(new Vector3(0f, velocity.y, 0f) * Time.deltaTime);
 
-        // also consider CharacterController’s Below flag, but our probe is primary
+        // also consider CharacterController’s Below flag
         if ((flags & CollisionFlags.Below) != 0) groundedNow = true;
-
-        // liftoff handling (after Move so groundedNow is most current)
-        HandleJumpDelay();
 
         // Animator params
         if (animator)
@@ -119,7 +111,7 @@ public class ThirdPersonController : MonoBehaviour
             animator.SetBool(groundedBool, groundedNow);
         }
 
-        // re-arm next jump when landed and key released
+        // re-arm jump only when grounded and the jump key is not held
         if (groundedNow && !jumpHeld) jumpArmed = true;
     }
 
@@ -131,19 +123,6 @@ public class ThirdPersonController : MonoBehaviour
         yaw += mx; pitch -= my;
         pitch = Mathf.Clamp(pitch, minPitch, maxPitch);
         cameraHolder.rotation = Quaternion.Euler(pitch, yaw, 0f);
-    }
-
-    void HandleJumpDelay()
-    {
-        if (!jumpQueued) return;
-        jumpTimer -= Time.deltaTime;
-        if (jumpTimer <= 0f)
-        {
-            if (groundedNow) // use our immediate grounded state
-                velocity.y = Mathf.Sqrt(2f * jumpHeight * -gravity);
-
-            jumpQueued = false; // consume regardless
-        }
     }
 
     // Immediate ground check at feet (faster than waiting on isGrounded)
