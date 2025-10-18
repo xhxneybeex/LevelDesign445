@@ -3,9 +3,9 @@ using UnityEngine;
 public class FreeLookCamera : MonoBehaviour
 {
     [Header("Target & Distance")]
-    public Transform target;           // The character to follow
-    public float distance = 5f;        // Distance behind the target
-    public float heightOffset = 2f;    // Vertical offset from target position
+    public Transform target;
+    public float distance = 5f;
+    public float heightOffset = 2f;
 
     [Header("Rotation Settings")]
     public float sensitivity = 5f;
@@ -16,6 +16,10 @@ public class FreeLookCamera : MonoBehaviour
     public float rotationSmoothTime = 0.1f;
     private Vector3 currentRotation;
     private Vector3 rotationSmoothVelocity;
+
+    [Header("Collision")]
+    public float collisionRadius = 0.3f;
+    public LayerMask collisionLayers;
 
     private float yaw;
     private float pitch;
@@ -48,12 +52,26 @@ public class FreeLookCamera : MonoBehaviour
         Vector3 targetRotation = new Vector3(pitch, yaw);
         currentRotation = Vector3.SmoothDamp(currentRotation, targetRotation, ref rotationSmoothVelocity, rotationSmoothTime);
 
-        // Calculate camera position
+        // Calculate desired position
         Quaternion rotation = Quaternion.Euler(currentRotation.x, currentRotation.y, 0);
         Vector3 offset = rotation * new Vector3(0, 0, -distance);
-        Vector3 desiredPosition = target.position + Vector3.up * heightOffset + offset;
+        Vector3 collisionOrigin = target.position + Vector3.up * heightOffset;
+        Vector3 desiredPosition = collisionOrigin + offset;
 
+        // Collision check
+        Vector3 direction = (desiredPosition - collisionOrigin).normalized;
+        float maxDistance = distance;
+
+        RaycastHit hit;
+        if (Physics.SphereCast(collisionOrigin, collisionRadius, direction, out hit, maxDistance, collisionLayers))
+        {
+            float adjustedDistance = hit.distance - collisionRadius;
+            adjustedDistance = Mathf.Clamp(adjustedDistance, 0.5f, distance);
+            desiredPosition = collisionOrigin + direction * adjustedDistance;
+        }
+
+        // Apply position and look
         transform.position = desiredPosition;
-        transform.LookAt(target.position + Vector3.up * heightOffset);
+        transform.LookAt(collisionOrigin);
     }
 }

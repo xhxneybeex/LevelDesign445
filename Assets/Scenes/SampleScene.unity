@@ -1113,13 +1113,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 628117bf89558c54bb97506f1e9a3c85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FreeLookCamera
-  target: {fileID: 1660526638}
+  target: {fileID: 1435869122}
   distance: 0
   heightOffset: 1.5
   sensitivity: 5
   verticalAngleMin: -30
   verticalAngleMax: 60
   rotationSmoothTime: 100
+  collisionRadius: 1.01
+  collisionLayers:
+    serializedVersion: 2
+    m_Bits: 55
 --- !u!1 &190880936
 GameObject:
   m_ObjectHideFlags: 0
@@ -4636,6 +4640,7 @@ GameObject:
   - component: {fileID: 899947365}
   - component: {fileID: 899947367}
   - component: {fileID: 899947366}
+  - component: {fileID: 899947368}
   m_Layer: 6
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -4717,6 +4722,25 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &899947368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899947364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aae58a429ba3be94697452046a021de3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraCollisionHandler
+  pivot: {fileID: 186231633}
+  maxDistance: 5
+  minDistance: 0.5
+  collisionRadius: 0.3
+  collisionLayers:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!1 &917336402
 GameObject:
   m_ObjectHideFlags: 0
@@ -8571,11 +8595,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 828640864}
   m_LocalEulerAnglesHint: {x: 0, y: 65.248, z: 0}
---- !u!4 &1660526638 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8486121130159114722, guid: f985e97e8b6ec45498cfb0d1c07ef121, type: 3}
-  m_PrefabInstance: {fileID: 1692079400}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1662533749
 GameObject:
   m_ObjectHideFlags: 0
@@ -10146,6 +10165,10 @@ MonoBehaviour:
   verticalAngleMin: -30
   verticalAngleMax: 60
   rotationSmoothTime: 100
+  collisionRadius: 0.3
+  collisionLayers:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
