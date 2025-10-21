@@ -14,7 +14,7 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
-  m_Fog: 0
+  m_Fog: 1
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.033
@@ -833,7 +833,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 8
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -886,7 +886,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: -5
+      scalar: -0.5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -1004,7 +1004,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.002
+      scalar: 0.01
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -1587,7 +1587,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 500
+      scalar: 800
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -5482,7 +5482,7 @@ Transform:
   m_GameObject: {fileID: 1186226009}
   serializedVersion: 2
   m_LocalRotation: {x: -0.69771075, y: -0.11488998, z: -0.11488996, w: 0.69771075}
-  m_LocalPosition: {x: 804.67, y: 196.6, z: 242.92}
+  m_LocalPosition: {x: 804.67, y: 232.1, z: 242.92}
   m_LocalScale: {x: 58.394257, y: 48.280384, z: 18.918129}
   m_ConstrainProportionsScale: 0
   m_Children: []
