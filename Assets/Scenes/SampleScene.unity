@@ -502,9 +502,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpeed: 5
   sprintSpeed: 9
+  crouchSpeed: 2.5
   jumpHeight: 1
   gravity: -9.81
-  jumpStickLockout: 0.08
+  jumpLockout: 0.08
   cameraPivot: {fileID: 0}
   lookSensitivity: 2
   minPitch: -80
@@ -513,20 +514,8 @@ MonoBehaviour:
   speedParam: Speed
   groundedBool: IsGrounded
   jumpTrigger: Jump
-  mantleBool: IsMantling
-  mantleTrigger: MantleStart
-  useRootMotionDuringMantle: 0
-  probeOrigin: {fileID: 0}
-  geometryMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  mantleWallDistance: 0.7
-  topProbeUp: 1
-  topProbeDown: 2
-  handBackFromWall: 0.3
-  snapToHangSpeed: 12
-  mantleTime: 0.45
-  mantleOffset: {x: 0, y: 1, z: 0.6}
+  crouchBool: IsCrouching
+  crouchSpeedParam: CrouchSpeed
 --- !u!1 &129697454
 GameObject:
   m_ObjectHideFlags: 0
@@ -1133,7 +1122,7 @@ MonoBehaviour:
   sensitivity: 5
   verticalAngleMin: -30
   verticalAngleMax: 60
-  rotationSmoothTime: 100
+  rotationSmoothTime: 194
   collisionRadius: 1.01
   collisionLayers:
     serializedVersion: 2
@@ -4011,6 +4000,117 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 735475653}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &741402484
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 741402488}
+  - component: {fileID: 741402487}
+  - component: {fileID: 741402486}
+  - component: {fileID: 741402485}
+  m_Layer: 0
+  m_Name: cube (63)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &741402485
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 741402484}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &741402486
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 741402484}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &741402487
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 741402484}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &741402488
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 741402484}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 38, y: 1.05, z: -6.03}
+  m_LocalScale: {x: 2.5724194, y: 3.479356, z: 5.8437}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &760606685
 GameObject:
   m_ObjectHideFlags: 0
@@ -6297,8 +6397,8 @@ Transform:
   m_GameObject: {fileID: 1225141123}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 38.72, y: 1.05, z: -6.03}
-  m_LocalScale: {x: 5.8437, y: 3.479356, z: 5.8437}
+  m_LocalPosition: {x: 36.38, y: 1.05, z: -6.03}
+  m_LocalScale: {x: 0.8329025, y: 3.479356, z: 5.8437}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -7488,9 +7588,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SimpleThirdPersonController
   walkSpeed: 5
   sprintSpeed: 9
+  crouchSpeed: 2
   jumpHeight: 1.6
   gravity: -9.81
-  jumpStickLockout: 0.08
+  jumpLockout: 0.08
   cameraPivot: {fileID: 0}
   lookSensitivity: 2
   minPitch: -60
@@ -7499,20 +7600,8 @@ MonoBehaviour:
   speedParam: Speed
   groundedBool: IsGrounded
   jumpTrigger: Jump
-  mantleBool: IsMantling
-  mantleTrigger: MantleStart
-  useRootMotionDuringMantle: 1
-  probeOrigin: {fileID: 1586691218}
-  geometryMask:
-    serializedVersion: 2
-    m_Bits: 8
-  mantleWallDistance: 2
-  topProbeUp: 2
-  topProbeDown: 2
-  handBackFromWall: 0.3
-  snapToHangSpeed: 12
-  mantleTime: 0.45
-  mantleOffset: {x: 0, y: 1, z: 0.6}
+  crouchBool: IsCrouching
+  crouchSpeedParam: CrouchSpeed
 --- !u!95 &1435869127 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: f985e97e8b6ec45498cfb0d1c07ef121, type: 3}
@@ -10579,6 +10668,7 @@ SceneRoots:
   - {fileID: 308812010}
   - {fileID: 294448918}
   - {fileID: 1225141127}
+  - {fileID: 741402488}
   - {fileID: 1965557682}
   - {fileID: 828640864}
   - {fileID: 800998567}
