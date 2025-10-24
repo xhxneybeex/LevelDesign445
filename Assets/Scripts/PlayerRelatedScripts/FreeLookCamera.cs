@@ -37,12 +37,18 @@ public class FreeLookCamera : MonoBehaviour
         yaw = angles.y;
         pitch = angles.x;
 
+        // lock unless inventory opens
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
 
     void LateUpdate()
     {
+        if (!target) return;
+
+        // HARD STOP when inventory is open
+        if (InventoryToggle.InventoryOpen) return;
+
         // Mouse input
         yaw += Input.GetAxis("Mouse X") * sensitivity;
         pitch -= Input.GetAxis("Mouse Y") * sensitivity;
@@ -62,15 +68,14 @@ public class FreeLookCamera : MonoBehaviour
         Vector3 direction = (desiredPosition - collisionOrigin).normalized;
         float maxDistance = distance;
 
-        RaycastHit hit;
-        if (Physics.SphereCast(collisionOrigin, collisionRadius, direction, out hit, maxDistance, collisionLayers))
+        if (Physics.SphereCast(collisionOrigin, collisionRadius, direction, out RaycastHit hit, maxDistance, collisionLayers))
         {
             float adjustedDistance = hit.distance - collisionRadius;
             adjustedDistance = Mathf.Clamp(adjustedDistance, 0.5f, distance);
             desiredPosition = collisionOrigin + direction * adjustedDistance;
         }
 
-        // Apply position and look
+        // Apply
         transform.position = desiredPosition;
         transform.LookAt(collisionOrigin);
     }

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CameraCollisionHandler : MonoBehaviour
 {
-    public Transform pivot; // Assign the Camera Holder (parent)
+    public Transform pivot; // Camera Holder (parent)
     public float maxDistance = 5f;
     public float minDistance = 0.5f;
     public float collisionRadius = 0.3f;
@@ -14,14 +14,16 @@ public class CameraCollisionHandler : MonoBehaviour
     {
         if (!pivot) return;
 
+        // stop moving the camera rig while inventory is open
+        if (InventoryToggle.InventoryOpen) return;
+
         Vector3 origin = pivot.position;
         Vector3 desiredPos = origin - pivot.forward * maxDistance;
         Vector3 direction = (desiredPos - origin).normalized;
 
-        RaycastHit hit;
         float targetDistance = maxDistance;
 
-        if (Physics.SphereCast(origin, collisionRadius, direction, out hit, maxDistance, collisionLayers))
+        if (Physics.SphereCast(origin, collisionRadius, direction, out RaycastHit hit, maxDistance, collisionLayers))
         {
             targetDistance = Mathf.Clamp(hit.distance - collisionRadius, minDistance, maxDistance);
         }
