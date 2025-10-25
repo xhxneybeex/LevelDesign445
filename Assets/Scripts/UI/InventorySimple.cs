@@ -9,13 +9,14 @@ public class InventorySimple : MonoBehaviour
 
     void Awake()
     {
+        // sets up slots when the game starts
         filled = new bool[Mathf.Max(1, slotCount)];
         Notify();
     }
 
-    // fill next empty slot, return true if success
     public bool AddOne()
     {
+        // finds the first empty slot and fills it
         for (int i = 0; i < filled.Length; i++)
         {
             if (!filled[i])
@@ -25,15 +26,22 @@ public class InventorySimple : MonoBehaviour
                 return true;
             }
         }
-        return false; // inventory full
+
+        // all slots full
+        return false;
     }
 
     public void ClearSlot(int index)
     {
+        // empties a specific slot
         if (index < 0 || index >= filled.Length) return;
         filled[index] = false;
         Notify();
     }
 
-    void Notify() => OnChanged?.Invoke();
+    void Notify()
+    {
+        // tells the UI that inventory changed
+        OnChanged?.Invoke();
+    }
 }
