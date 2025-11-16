@@ -340,6 +340,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::InventoryToggle
   inventoryRoot: {fileID: 449856250}
   pauseGameWhileOpen: 0
+  disableWhenOpen: []
 --- !u!1001 &789565933
 PrefabInstance:
   m_ObjectHideFlags: 0
