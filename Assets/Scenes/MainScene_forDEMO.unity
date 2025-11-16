@@ -5830,9 +5830,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5202768463234161086, guid: 1a0f8cda3ec1a6b458390995e0226986, type: 3}
+      propertyPath: rotationSmoothTime
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 6937406693521359601, guid: 1a0f8cda3ec1a6b458390995e0226986, type: 3}
+      propertyPath: cameraPivot
+      value: 
+      objectReference: {fileID: 1923027033}
     - target: {fileID: 8082123358964464100, guid: 1a0f8cda3ec1a6b458390995e0226986, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 830.71
+      value: 821.44
       objectReference: {fileID: 0}
     - target: {fileID: 8082123358964464100, guid: 1a0f8cda3ec1a6b458390995e0226986, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5840,7 +5848,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8082123358964464100, guid: 1a0f8cda3ec1a6b458390995e0226986, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 258.47
+      value: 253.27
       objectReference: {fileID: 0}
     - target: {fileID: 8082123358964464100, guid: 1a0f8cda3ec1a6b458390995e0226986, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5869,6 +5877,14 @@ PrefabInstance:
     - target: {fileID: 8082123358964464100, guid: 1a0f8cda3ec1a6b458390995e0226986, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8128640396459207761, guid: 1a0f8cda3ec1a6b458390995e0226986, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 8128640396459207761, guid: 1a0f8cda3ec1a6b458390995e0226986, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10.89
       objectReference: {fileID: 0}
     - target: {fileID: 8890854377544672094, guid: 1a0f8cda3ec1a6b458390995e0226986, type: 3}
       propertyPath: m_Name
@@ -6013,6 +6029,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectiblePickup
   playerTag: Player
+--- !u!4 &1923027033 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3582105786978276882, guid: 1a0f8cda3ec1a6b458390995e0226986, type: 3}
+  m_PrefabInstance: {fileID: 1606488171}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1961116682
 PrefabInstance:
   m_ObjectHideFlags: 0

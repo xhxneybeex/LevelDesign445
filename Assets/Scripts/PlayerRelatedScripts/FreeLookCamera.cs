@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class FreeLookCamera : MonoBehaviour
 {
@@ -54,10 +54,6 @@ public class FreeLookCamera : MonoBehaviour
         pitch -= Input.GetAxis("Mouse Y") * sensitivity;
         pitch = Mathf.Clamp(pitch, verticalAngleMin, verticalAngleMax);
 
-        // Smooth rotation
-        Vector3 targetRotation = new Vector3(pitch, yaw);
-        currentRotation = Vector3.SmoothDamp(currentRotation, targetRotation, ref rotationSmoothVelocity, rotationSmoothTime);
-
         // Calculate desired position
         Quaternion rotation = Quaternion.Euler(currentRotation.x, currentRotation.y, 0);
         Vector3 offset = rotation * new Vector3(0, 0, -distance);
@@ -74,6 +70,11 @@ public class FreeLookCamera : MonoBehaviour
             adjustedDistance = Mathf.Clamp(adjustedDistance, 0.5f, distance);
             desiredPosition = collisionOrigin + direction * adjustedDistance;
         }
+
+        // Smooth rotation
+        Vector3 targetRotation = new Vector3(pitch, yaw);
+        currentRotation = Vector3.SmoothDamp(currentRotation, targetRotation, ref rotationSmoothVelocity, rotationSmoothTime);
+
 
         // Apply
         transform.position = desiredPosition;
