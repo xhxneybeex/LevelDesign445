@@ -27,6 +27,9 @@ public class ThirdPersonMovement : MonoBehaviour
     public string crouchBool = "IsCrouching";
     public string crouchSpeedParam = "CrouchSpeed";
 
+    [Header("Climbing")]
+    public SimpleMantle mantle;   // drag your SimpleMantle here in the inspector
+
     CharacterController cc;
     Vector3 velocity;
     float yaw, pitch;
@@ -75,14 +78,27 @@ public class ThirdPersonMovement : MonoBehaviour
         if (grounded && jumpTimer <= 0f && velocity.y < 0f)
             velocity.y = -2f;
 
-        if (Input.GetKeyDown(KeyCode.Space) && grounded)
+        // MANTLE OR JUMP
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-            jumpTimer = jumpLockout;
-            if (animator)
+            // First, try to mantle
+            if (mantle != null && mantle.TryStartMantleOnSpace())
             {
-                animator.ResetTrigger(jumpTrigger);
-                animator.SetTrigger(jumpTrigger);
+                // Mantle started, SimpleMantle will disable this script,
+                // so stop Update here for this frame
+                return;
+            }
+
+            // If no ledge, do normal jump if grounded
+            if (grounded)
+            {
+                velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+                jumpTimer = jumpLockout;
+                if (animator)
+                {
+                    animator.ResetTrigger(jumpTrigger);
+                    animator.SetTrigger(jumpTrigger);
+                }
             }
         }
 
