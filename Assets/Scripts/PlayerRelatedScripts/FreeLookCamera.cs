@@ -2,6 +2,7 @@
 
 public class FreeLookCamera : MonoBehaviour
 {
+    // we no longer use any of this code as its literally FUCKING POINTLESS APPARENTLY.
     [Header("Target & Distance")]
     public Transform target;
     public float distance = 5f;
