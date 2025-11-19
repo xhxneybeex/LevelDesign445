@@ -9,9 +9,11 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: (TTFE)GlobalGizmo_Leaves
   m_Shader: {fileID: 4800000, guid: 6f53b8cb323b0614c82237d5b033019f, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _LEAFFLUTTER_ON
-  - _WINDTYPE_WINDOFF
+  - _WINDTYPE_GENTLEBREEZE
   m_InvalidKeywords:
   - GentleBreeze
   - _DIRECTIONALWIND_ON
@@ -27,6 +29,7 @@ Material:
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -165,7 +168,7 @@ Material:
     - _SSSFalloff: 0
     - _SSSMapOffset: 0
     - _SSSMapScale: 1
-    - _SeasonChangeGlobal: -0.2
+    - _SeasonChangeGlobal: -2
     - _SeasonVertexColorR: 0
     - _SelfShadingVertexColor: 0
     - _Shininess: 0.1
@@ -231,3 +234,4 @@ Material:
     - _MainColor: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
     - _SpecularColor: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
   m_BuildTextureStacks: []
+  m_AllowLocking: 1

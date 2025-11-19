@@ -9,6 +9,8 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: FlowersTTFEL
   m_Shader: {fileID: 4800000, guid: 6f53b8cb323b0614c82237d5b033019f, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _LEAFFLUTTER_ON
   - _SELFSHADINGVERTEXCOLOR_ON
@@ -39,6 +41,7 @@ Material:
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -277,7 +280,7 @@ Material:
     - _SSSMapOffset: 0.1
     - _SSSMapScale: 1
     - _Scale: 0
-    - _SeasonChangeGlobal: -0.2
+    - _SeasonChangeGlobal: -2
     - _SeasonVertexColorR: 1
     - _SelfShadingVertexColor: 1
     - _Shininess: 0.01
@@ -364,3 +367,4 @@ Material:
     - _TranslucencyColor: {r: 0.9811321, g: 0.9284052, b: 0.80989677, a: 0}
     - _XXXXXXXXX: {r: 0.7924528, g: 0.7063729, b: 0.0710217, a: 0}
   m_BuildTextureStacks: []
+  m_AllowLocking: 1

@@ -9,6 +9,8 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Shrub_Leaves_Bush
   m_Shader: {fileID: 4800000, guid: 6f53b8cb323b0614c82237d5b033019f, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _LEAFFLUTTER_ON
   - _SELFSHADINGVERTEXCOLOR_ON
@@ -74,6 +76,7 @@ Material:
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -367,7 +370,7 @@ Material:
     - _SSSMapScale: 1
     - _Scale: 5
     - _Sclevg: 1
-    - _SeasonChangeGlobal: -0.2
+    - _SeasonChangeGlobal: -2
     - _SeasonChnageA: 5
     - _SeasonChnageA1: 5
     - _SeasonChnageA2: 5
@@ -479,3 +482,4 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Leadydry: {r: 1, g: 0.6334349, b: 0, a: 0}
   m_BuildTextureStacks: []
+  m_AllowLocking: 1

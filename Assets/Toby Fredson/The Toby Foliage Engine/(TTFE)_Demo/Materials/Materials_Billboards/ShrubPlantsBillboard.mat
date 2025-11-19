@@ -9,6 +9,8 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: ShrubPlantsBillboard
   m_Shader: {fileID: 4800000, guid: 0f465929dfb2594408a217d30f4c714e, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _SELFSHADING_ON
   - _WINDTYPE_GENTLEBREEZE
@@ -29,6 +31,7 @@ Material:
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -187,7 +190,7 @@ Material:
     - _RandomContrast: 1
     - _RandomContrastOnOff: 0
     - _SEASONSETTINGS: 0
-    - _SeasonChangeGlobal: -0.2
+    - _SeasonChangeGlobal: -2
     - _SeasonChnageA: 0
     - _SeasonChnageB: 0
     - _SeasonVertexColorR: 0
@@ -231,3 +234,4 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _TranslucencyColor: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []
+  m_AllowLocking: 1

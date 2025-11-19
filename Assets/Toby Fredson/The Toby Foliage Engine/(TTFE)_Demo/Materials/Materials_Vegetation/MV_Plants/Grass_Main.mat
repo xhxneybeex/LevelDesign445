@@ -9,6 +9,8 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Grass_Main
   m_Shader: {fileID: 4800000, guid: 9836eda9c73d0e7419630eb145f848ab, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _CONTINUOUSWINDGENTLE_ON
   - _SPECULARBACKFACEOCCLUSION_ON
@@ -118,6 +120,7 @@ Material:
   - TransparentBackfaceDebugDisplay
   - TransparentDepthPrepass
   - TransparentDepthPostpass
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -845,7 +848,7 @@ Material:
     - _SPEED: 1
     - _SSSFalloff: 0.1
     - _ScaleA: 0.4
-    - _SeasonChangeGlobal: -0.2
+    - _SeasonChangeGlobal: -2
     - _SeasonChangeGlobal1: 0.24
     - _SeasonVertexColorR: 0
     - _SeasonVertexColorR1: 0
@@ -1172,3 +1175,4 @@ Material:
     - _render_normals_options1: {r: 1, g: 1, b: 1, a: 0}
     - _second_uvs_mode: {r: 1, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
+  m_AllowLocking: 1

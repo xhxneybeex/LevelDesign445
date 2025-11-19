@@ -9,8 +9,10 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: (TTFE)GlobalGizmo_Bark
   m_Shader: {fileID: 4800000, guid: 7198a50c8eac1cc40bf6b38ff84a0a0e, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-  - _WINDTYPE_WINDOFF
+  - _WINDTYPE_GENTLEBREEZE
   m_InvalidKeywords:
   - _AO_ON
   - _CENTEROFMASS_ON
@@ -23,6 +25,7 @@ Material:
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -150,3 +153,4 @@ Material:
     - _Offset: {r: 1, g: 1, b: 0, a: 0}
     - _Tiling: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
+  m_AllowLocking: 1
