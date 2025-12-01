@@ -271,6 +271,10 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2344745914701946266, guid: a669387fd6627f9408f93599d9e95478, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3100369405614951344, guid: a669387fd6627f9408f93599d9e95478, type: 3}
       propertyPath: m_LocalPosition.x
       value: 114.816
@@ -457,6 +461,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32f85295fe26b0e498b3e62151fdeae7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneAutoLoader
+  delay: 17
 --- !u!4 &1133921098
 Transform:
   m_ObjectHideFlags: 0
