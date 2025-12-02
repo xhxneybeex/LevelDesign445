@@ -26,7 +26,7 @@ public class RaycastInteractor : MonoBehaviour
     [Header("Debug")]
     public bool debugLogs = false;
 
-    SimpleDoor currentDoor;
+    private GameObject currentInteractable;
 
     void Awake()
     {
@@ -37,12 +37,12 @@ public class RaycastInteractor : MonoBehaviour
 
     void Update()
     {
-        currentDoor = null;
+        currentInteractable = null;
 
         // Ray from the SCREEN CENTER (matches Cinemachine view even if offset)
         Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
-
         RaycastHit hit;
+
         bool hitSomething = useSphereCast
             ? Physics.SphereCast(ray, sphereRadius, out hit, aimMaxDistance, mask, triggerMode)
             : Physics.Raycast(ray, out hit, aimMaxDistance, mask, triggerMode);
@@ -57,14 +57,16 @@ public class RaycastInteractor : MonoBehaviour
             Transform t = hit.collider.transform;
             bool tagged = t.CompareTag(interactableTag) || (t.parent && t.parent.CompareTag(interactableTag));
 
-            if (debugLogs) Debug.Log($"[Interactor] Hit {t.name}  tagged:{tagged}  dist:{dist:0.00}");
+            if (debugLogs) Debug.Log($"[Interactor] Hit {t.name}  tagged:{tagged}  dist:{dist:F2}");
 
             if (tagged && dist <= reach)
             {
-                // Find a SimpleDoor on this object or any parent (works if collider is on a child, script on the hinge)
-                currentDoor = hit.collider.GetComponentInParent<SimpleDoor>();
-                showHand = currentDoor != null;
-                if (debugLogs && currentDoor == null) Debug.Log("[Interactor] Interactable tagged but no SimpleDoor found in parents");
+                // Store the interactable object (the one with the tag)
+                currentInteractable = t.CompareTag(interactableTag) ? t.gameObject : t.parent.gameObject;
+                showHand = true;
+
+                if (debugLogs && currentInteractable != null)
+                    Debug.Log($"[Interactor] Found interactable: {currentInteractable.name}");
             }
         }
 
@@ -72,10 +74,10 @@ public class RaycastInteractor : MonoBehaviour
         if (handIcon) handIcon.SetActive(showHand);
 
         // Interact
-        if (currentDoor != null && Input.GetKeyDown(interactKey))
+        if (currentInteractable != null && Input.GetKeyDown(interactKey))
         {
-            if (debugLogs) Debug.Log($"[Interactor] Interact → {currentDoor.name}");
-            currentDoor.Interact();
+            if (debugLogs) Debug.Log($"[Interactor] Interact → {currentInteractable.name}");
+            currentInteractable.SendMessage("Interact", SendMessageOptions.DontRequireReceiver);
         }
     }
 
