@@ -4,18 +4,31 @@ using System.Collections;
 public class SimpleDoor : MonoBehaviour
 {
     [Header("Rotation")]
-    public float openAngle = 90f;     // degrees
-    public float speed = 180f;        // deg/sec
+    public float openAngle = 90f;     // how far to rotate on Y
+    public float speed = 3f;          // how fast to rotate
 
-    [Header("Blocking Collider")]
-    public Collider blocker;          // assign the Door's BoxCollider here
+    [Header("Blocking Collider (optional)")]
+    public Collider blocker;          // assign if you want it, otherwise leave null
 
-    bool open, busy;
+    bool isOpen = false;
+    bool busy = false;
+
+    Quaternion closedRot;
+    Quaternion openRot;
+
+    void Start()
+    {
+        // Cache the starting rotation as "closed"
+        closedRot = transform.localRotation;
+        openRot = closedRot * Quaternion.Euler(0f, openAngle, 0f);
+    }
 
     public void Interact()
     {
         if (busy) return;
-        open = !open;
+
+        Debug.Log("SimpleDoor.Interact called on " + name);
+
         StartCoroutine(Animate());
     }
 
@@ -23,24 +36,29 @@ public class SimpleDoor : MonoBehaviour
     {
         busy = true;
 
-        // Opening → stop blocking so we never push the player
-        if (open && blocker) blocker.enabled = false;
-
-        float targetY = transform.localEulerAngles.y + (open ? openAngle : -openAngle);
-        while (Mathf.Abs(Mathf.DeltaAngle(transform.localEulerAngles.y, targetY)) > 0.5f)
+        if (!isOpen && blocker != null)
         {
-            float y = Mathf.MoveTowardsAngle(transform.localEulerAngles.y, targetY, speed * Time.deltaTime);
-            var e = transform.localEulerAngles; e.y = y; transform.localEulerAngles = e;
+            // about to OPEN → disable blocking if you use it
+            blocker.enabled = false;
+        }
+
+        Quaternion start = transform.localRotation;
+        Quaternion target = isOpen ? closedRot : openRot;
+
+        float t = 0f;
+        while (t < 1f)
+        {
+            t += Time.deltaTime * speed;
+            transform.localRotation = Quaternion.Slerp(start, target, t);
             yield return null;
         }
 
-        // Closed → block again (only if space is clear)
-        if (!open && blocker)
-        {
-            // optional safety: don’t re-enable if the player is inside the doorway
-            // if (!Physics.CheckBox(blocker.bounds.center, blocker.bounds.extents * 0.95f, blocker.transform.rotation, LayerMask.GetMask("Player")))
+        transform.localRotation = target;
+        isOpen = !isOpen;
+
+        // just closed → re-enable blocker
+        if (!isOpen && blocker != null)
             blocker.enabled = true;
-        }
 
         busy = false;
     }
