@@ -4,13 +4,27 @@ public class GunPickup : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        // find GunInHand object on the player and activate it
+        if (!other.CompareTag("Player"))
+            return;
+
+        PlayerInventoryHolder inventoryHolder = other.GetComponent<PlayerInventoryHolder>();
+        if (inventoryHolder == null)
+        {
+            Debug.LogWarning("GunPickup: Player doesn't have PlayerInventoryHolder component!");
+            return;
+        }
+
+        if (!inventoryHolder.Inventory.HasItem(ItemType.Coin))
+        {
+            Debug.Log("GunPickup: You need to collect the coin first!");
+            return;
+        }
+
         Transform child = other.transform.Find("GunInHand");
         if (child != null)
         {
             child.gameObject.SetActive(true);
 
-            // Get the GunController component and call Equip()
             GunController gunController = child.GetComponent<GunController>();
             if (gunController != null)
             {
@@ -22,7 +36,6 @@ public class GunPickup : MonoBehaviour
                 Debug.LogWarning("GunPickup: GunInHand has no GunController component!");
             }
 
-            // Destroy pickup object so it can't be picked up again
             Destroy(gameObject);
         }
         else
