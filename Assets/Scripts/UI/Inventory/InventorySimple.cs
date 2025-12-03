@@ -1,47 +1,52 @@
-using System;
+﻿using System;
 using UnityEngine;
 
 public class InventorySimple : MonoBehaviour
 {
     public int slotCount = 12;
-    public bool[] filled;
+    public ItemType[] slots;
     public event Action OnChanged;
 
     void Awake()
     {
-        // sets up slots when the game starts
-        filled = new bool[Mathf.Max(1, slotCount)];
+        slotCount = Mathf.Max(1, slotCount);
+        slots = new ItemType[slotCount];   // default ItemType.None
         Notify();
     }
 
-    public bool AddOne()
+    public bool AddItem(ItemType item)
     {
-        // finds the first empty slot and fills it
-        for (int i = 0; i < filled.Length; i++)
+        for (int i = 0; i < slots.Length; i++)
         {
-            if (!filled[i])
+            if (slots[i] == ItemType.None)
             {
-                filled[i] = true;
+                slots[i] = item;
                 Notify();
                 return true;
             }
         }
-
-        // all slots full
         return false;
     }
 
     public void ClearSlot(int index)
     {
-        // empties a specific slot
-        if (index < 0 || index >= filled.Length) return;
-        filled[index] = false;
+        if (index < 0 || index >= slots.Length) return;
+        slots[index] = ItemType.None;
         Notify();
     }
 
-    void Notify()
+    public bool HasItem(ItemType item)
     {
-        // tells the UI that inventory changed
+        for (int i = 0; i < slots.Length; i++)
+        {
+            if (slots[i] == item) return true;
+        }
+        return false;
+    }
+
+    // 🔹 made public so OTHER scripts can trigger a refresh safely
+    public void Notify()
+    {
         OnChanged?.Invoke();
     }
 }

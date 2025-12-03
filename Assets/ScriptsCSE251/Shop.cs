@@ -1,51 +1,56 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
+[RequireComponent(typeof(Collider))]
 public class Shop : MonoBehaviour
 {
-    UIManager UI = null;
+    public string playerTag = "Player";
 
-
-    // Start is called before the first frame update
-    void Start()
+    void Reset()
     {
-        UI = GameObject.Find("UIManager").GetComponent<UIManager>();
+        var c = GetComponent<Collider>();
+        c.isTrigger = true;
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnTriggerEnter(Collider other)
     {
-        
-    }
+        if (!other.CompareTag(playerTag)) return;
 
-    private void OnTriggerStay(Collider other)
-    {
-        if(other.CompareTag("Player"))
+        // Get the inventory
+        if (other.TryGetComponent<PlayerInventoryHolder>(out var holder))
         {
-            Debug.Log("Press E to purchase a weapon.");
+            var inv = holder.Inventory;
 
-            if(Input.GetKeyDown(KeyCode.E))
+            // Check if player has a coin
+            if (inv.HasItem(ItemType.Coin))
             {
-                Player p = other.GetComponent<Player>();
+                // Remove ONE coin
+                RemoveOneCoin(inv);
 
-                if(p != null)
-                {
-                    if(p.hasCoin)
-                    {
-                        p.hasCoin = false;
+                // Grant the weapon
+                var p = other.GetComponent<Player>();
+                if (p != null) p.EnableWeapon();
 
-                        if(UI != null)
-                            UI.RemoveCoin();
-
-                        AudioSource audio = GetComponent<AudioSource>();
-                        if (audio != null)
-                            audio.Play();
-
-                        p.EnableWeapon();
-                    }
-                }
+                // Destroy gun pickup object
+                Destroy(gameObject);
+            }
+            else
+            {
+                Debug.Log("Need a coin to pick up weapon.");
             }
         }
     }
+
+    void RemoveOneCoin(InventorySimple inv)
+    {
+        for (int i = 0; i < inv.slots.Length; i++)
+        {
+            if (inv.slots[i] == ItemType.Coin)
+            {
+                inv.slots[i] = ItemType.None;
+                inv.Notify();   // tell UI to refresh
+                return;
+            }
+        }
+    }
+
 }

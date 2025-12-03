@@ -5,10 +5,16 @@ public class UISlotSimple : MonoBehaviour
 {
     public Image icon;
 
-    public void ShowSquare(Sprite squareSprite, bool filled)
+    public void ShowItem(Sprite sprite, bool filled)
     {
         if (!icon) icon = GetComponentInChildren<Image>();
+        if (!icon) return;
+
         icon.enabled = filled;
-        if (filled && squareSprite) icon.sprite = squareSprite;
+
+        if (filled)
+        {
+            icon.sprite = sprite;
+        }
     }
 }

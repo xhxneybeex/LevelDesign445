@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class InventoryUISimple : MonoBehaviour
@@ -7,7 +7,16 @@ public class InventoryUISimple : MonoBehaviour
     public InventorySimple inventory;
     public Transform gridParent;    // has GridLayoutGroup
     public GameObject slotPrefab;   // prefab with an Image + UISlotSimple
-    public Sprite squareSprite;     // your simple square icon
+
+    [System.Serializable]
+    public class ItemIcon
+    {
+        public ItemType type;
+        public Sprite sprite;
+    }
+
+    [Header("Icons")]
+    public ItemIcon[] itemIcons;    // assign in inspector (Coin → coin sprite)
 
     List<UISlotSimple> uiSlots = new List<UISlotSimple>();
 
@@ -40,13 +49,34 @@ public class InventoryUISimple : MonoBehaviour
         }
     }
 
+    Sprite GetSpriteFor(ItemType type)
+    {
+        if (type == ItemType.None) return null;
+
+        foreach (var entry in itemIcons)
+        {
+            if (entry.type == type)
+                return entry.sprite;
+        }
+
+        return null;
+    }
+
     void Refresh()
     {
         if (!inventory) return;
+
         for (int i = 0; i < uiSlots.Count; i++)
         {
-            bool filled = i < inventory.filled.Length && inventory.filled[i];
-            uiSlots[i].ShowSquare(squareSprite, filled);
+            ItemType itemType = ItemType.None;
+
+            if (inventory.slots != null && i < inventory.slots.Length)
+                itemType = inventory.slots[i];
+
+            Sprite sprite = GetSpriteFor(itemType);
+            bool filled = itemType != ItemType.None;
+
+            uiSlots[i].ShowItem(sprite, filled);
         }
     }
 }

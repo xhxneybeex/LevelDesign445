@@ -5,11 +5,14 @@ public class CollectiblePickup : MonoBehaviour
 {
     public string playerTag = "Player";
 
+    // what this pickup actually is
+    public ItemType itemType = ItemType.Coin;
+
     void Reset()
     {
         var c = GetComponent<Collider>();
         c.isTrigger = true;
-        gameObject.tag = "Collectible"; // helpful default
+        gameObject.tag = "Collectible";
     }
 
     void OnTriggerEnter(Collider other)
@@ -18,9 +21,9 @@ public class CollectiblePickup : MonoBehaviour
 
         if (other.TryGetComponent<PlayerInventoryHolder>(out var holder))
         {
-            if (holder.Inventory.AddOne())
+            if (holder.Inventory.AddItem(itemType))
             {
-                Destroy(gameObject);
+                Destroy(gameObject);   // picked up
             }
             else
             {

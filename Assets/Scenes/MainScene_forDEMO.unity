@@ -295,6 +295,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &269015508 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7531547816655993804, guid: ccea61f9fb5a0ca4ba8439c582bffd36, type: 3}
+  m_PrefabInstance: {fileID: 855523165}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &371158728
 GameObject:
   m_ObjectHideFlags: 0
@@ -405,6 +410,209 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2135122300}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &575775858
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 269015508}
+    m_Modifications:
+    - target: {fileID: 1303171181363726, guid: 88bae2de7f0014e4fa5e93fd72610be7, type: 3}
+      propertyPath: m_Name
+      value: GunInHand
+      objectReference: {fileID: 0}
+    - target: {fileID: 1303171181363726, guid: 88bae2de7f0014e4fa5e93fd72610be7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1880188830180300, guid: 88bae2de7f0014e4fa5e93fd72610be7, type: 3}
+      propertyPath: m_TagString
+      value: Collectible
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902221070576554, guid: 88bae2de7f0014e4fa5e93fd72610be7, type: 3}
+      propertyPath: m_Name
+      value: Body
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902221070576554, guid: 88bae2de7f0014e4fa5e93fd72610be7, type: 3}
+      propertyPath: m_TagString
+      value: Collectible
+      objectReference: {fileID: 0}
+    - target: {fileID: 4717414709492158, guid: 88bae2de7f0014e4fa5e93fd72610be7, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.4521823
+      objectReference: {fileID: 0}
+    - target: {fileID: 4717414709492158, guid: 88bae2de7f0014e4fa5e93fd72610be7, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.4521825
+      objectReference: {fileID: 0}
+    - target: {fileID: 4717414709492158, guid: 88bae2de7f0014e4fa5e93fd72610be7, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.4521823
+      objectReference: {fileID: 0}
+    - target: {fileID: 4717414709492158, guid: 88bae2de7f0014e4fa5e93fd72610be7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 46.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 4717414709492158, guid: 88bae2de7f0014e4fa5e93fd72610be7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4717414709492158, guid: 88bae2de7f0014e4fa5e93fd72610be7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 15.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 4717414709492158, guid: 88bae2de7f0014e4fa5e93fd72610be7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.576925
+      objectReference: {fileID: 0}
+    - target: {fileID: 4717414709492158, guid: 88bae2de7f0014e4fa5e93fd72610be7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.42293334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4717414709492158, guid: 88bae2de7f0014e4fa5e93fd72610be7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.5723352
+      objectReference: {fileID: 0}
+    - target: {fileID: 4717414709492158, guid: 88bae2de7f0014e4fa5e93fd72610be7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.4008959
+      objectReference: {fileID: 0}
+    - target: {fileID: 4717414709492158, guid: 88bae2de7f0014e4fa5e93fd72610be7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 1.668
+      objectReference: {fileID: 0}
+    - target: {fileID: 4717414709492158, guid: 88bae2de7f0014e4fa5e93fd72610be7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90.738
+      objectReference: {fileID: 0}
+    - target: {fileID: 4717414709492158, guid: 88bae2de7f0014e4fa5e93fd72610be7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -71.279
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1880188830180300, guid: 88bae2de7f0014e4fa5e93fd72610be7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 575775863}
+    - targetCorrespondingSourceObject: {fileID: 1880188830180300, guid: 88bae2de7f0014e4fa5e93fd72610be7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 575775862}
+    - targetCorrespondingSourceObject: {fileID: 1880188830180300, guid: 88bae2de7f0014e4fa5e93fd72610be7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 575775861}
+  m_SourcePrefab: {fileID: 100100000, guid: 88bae2de7f0014e4fa5e93fd72610be7, type: 3}
+--- !u!4 &575775859 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4717414709492158, guid: 88bae2de7f0014e4fa5e93fd72610be7, type: 3}
+  m_PrefabInstance: {fileID: 575775858}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &575775860 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1880188830180300, guid: 88bae2de7f0014e4fa5e93fd72610be7, type: 3}
+  m_PrefabInstance: {fileID: 575775858}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &575775861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 575775860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7c5e7e179f295f42b9a37f178fa936c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GunPickup
+  playerTag: Player
+--- !u!114 &575775862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 575775860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3c347dd771c1344284fc829aedf9eae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Shop
+  playerTag: Player
+--- !u!65 &575775863
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 575775860}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.21267124, y: 0.30459175, z: 0.95518875}
+  m_Center: {x: -0.0061559915, y: 0.08704824, z: -0.022405554}
+--- !u!1 &614779025 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5787905418217020475, guid: ccea61f9fb5a0ca4ba8439c582bffd36, type: 3}
+  m_PrefabInstance: {fileID: 855523165}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &614779027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614779025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3c347dd771c1344284fc829aedf9eae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Shop
+  playerTag: Player
+--- !u!65 &614779028
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614779025}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.21267124, y: 0.30459175, z: 0.95518875}
+  m_Center: {x: -0.0061559915, y: 0.08704824, z: -0.022405554}
+--- !u!114 &614779029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614779025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7c5e7e179f295f42b9a37f178fa936c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GunPickup
+  playerTag: Player
 --- !u!1 &738544143
 GameObject:
   m_ObjectHideFlags: 0
@@ -533,7 +741,19 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5787348104939306489, guid: ccea61f9fb5a0ca4ba8439c582bffd36, type: 3}
+      propertyPath: m_Name
+      value: Gun
+      objectReference: {fileID: 0}
     - target: {fileID: 5787874585580213341, guid: ccea61f9fb5a0ca4ba8439c582bffd36, type: 3}
+      propertyPath: m_Name
+      value: Body
+      objectReference: {fileID: 0}
+    - target: {fileID: 5787874585580213341, guid: ccea61f9fb5a0ca4ba8439c582bffd36, type: 3}
+      propertyPath: m_TagString
+      value: Collectible
+      objectReference: {fileID: 0}
+    - target: {fileID: 5787905418217020475, guid: ccea61f9fb5a0ca4ba8439c582bffd36, type: 3}
       propertyPath: m_TagString
       value: Collectible
       objectReference: {fileID: 0}
@@ -580,17 +800,23 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 9099862014123314453, guid: ccea61f9fb5a0ca4ba8439c582bffd36, type: 3}
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 7531547816655993804, guid: ccea61f9fb5a0ca4ba8439c582bffd36, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 575775859}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3566998278702530414, guid: ccea61f9fb5a0ca4ba8439c582bffd36, type: 3}
       insertIndex: -1
       addedObject: {fileID: 990069099}
-    - targetCorrespondingSourceObject: {fileID: 5787874585580213341, guid: ccea61f9fb5a0ca4ba8439c582bffd36, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 5787905418217020475, guid: ccea61f9fb5a0ca4ba8439c582bffd36, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1111827391}
-    - targetCorrespondingSourceObject: {fileID: 5787874585580213341, guid: ccea61f9fb5a0ca4ba8439c582bffd36, type: 3}
+      addedObject: {fileID: 614779028}
+    - targetCorrespondingSourceObject: {fileID: 5787905418217020475, guid: ccea61f9fb5a0ca4ba8439c582bffd36, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1111827390}
+      addedObject: {fileID: 614779027}
+    - targetCorrespondingSourceObject: {fileID: 5787905418217020475, guid: ccea61f9fb5a0ca4ba8439c582bffd36, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 614779029}
   m_SourcePrefab: {fileID: 100100000, guid: ccea61f9fb5a0ca4ba8439c582bffd36, type: 3}
 --- !u!1 &898886908
 GameObject:
@@ -742,6 +968,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectiblePickup
   playerTag: Player
+  itemType: 1
 --- !u!1 &999862537
 GameObject:
   m_ObjectHideFlags: 0
@@ -1011,44 +1238,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0eab86cdde01fe4e86c79b23fb6e34a, type: 3}
---- !u!1 &1111827386 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5787874585580213341, guid: ccea61f9fb5a0ca4ba8439c582bffd36, type: 3}
-  m_PrefabInstance: {fileID: 855523165}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1111827390
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1111827386}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3c347dd771c1344284fc829aedf9eae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Shop
---- !u!65 &1111827391
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1111827386}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.10485797, y: 0.23501673, z: 0.95275354}
-  m_Center: {x: 0.00008078429, y: -0.023517113, z: -0.035303254}
 --- !u!1001 &1136264988
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6206,6 +6395,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectiblePickup
   playerTag: Player
+  itemType: 1
 --- !u!135 &1366862476
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -6331,6 +6521,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectiblePickup
   playerTag: Player
+  itemType: 1
 --- !u!135 &1590473951
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -6775,6 +6966,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectiblePickup
   playerTag: Player
+  itemType: 1
 --- !u!1 &1864821070
 GameObject:
   m_ObjectHideFlags: 0
@@ -7063,7 +7255,7 @@ MonoBehaviour:
   inventory: {fileID: 1314365172}
   gridParent: {fileID: 1992161664}
   slotPrefab: {fileID: 5812920937250041751, guid: c6eafbf2273957d4faf77fdfd1a56090, type: 3}
-  squareSprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  itemIcons: []
 --- !u!1 &2011279710
 GameObject:
   m_ObjectHideFlags: 0
@@ -7590,6 +7782,18 @@ PrefabInstance:
     - target: {fileID: 5583873594790527683, guid: a669387fd6627f9408f93599d9e95478, type: 3}
       propertyPath: slotCount
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5583873594790527683, guid: a669387fd6627f9408f93599d9e95478, type: 3}
+      propertyPath: slots.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5583873594790527683, guid: a669387fd6627f9408f93599d9e95478, type: 3}
+      propertyPath: 'slots.Array.data[0]'
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5583873594790527683, guid: a669387fd6627f9408f93599d9e95478, type: 3}
+      propertyPath: 'slots.Array.data[1]'
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6830202157795149200, guid: a669387fd6627f9408f93599d9e95478, type: 3}
       propertyPath: m_Name
