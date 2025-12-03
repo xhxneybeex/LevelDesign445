@@ -374,6 +374,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 371158728}
   m_CullTransparentMesh: 1
+--- !u!1 &382108909 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1303171181363726, guid: 88bae2de7f0014e4fa5e93fd72610be7, type: 3}
+  m_PrefabInstance: {fileID: 575775858}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &575775858
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -490,6 +495,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1303171181363726, guid: 88bae2de7f0014e4fa5e93fd72610be7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 575775861}
     - targetCorrespondingSourceObject: {fileID: 1880188830180300, guid: 88bae2de7f0014e4fa5e93fd72610be7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 575775863}
@@ -504,6 +512,25 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1880188830180300, guid: 88bae2de7f0014e4fa5e93fd72610be7, type: 3}
   m_PrefabInstance: {fileID: 575775858}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &575775861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 382108909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e7078841f2c24142a3e77392f9e83c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GunController
+  currentAmmo: 0
+  maxAmmo: 30
+  reloadTime: 2
+  muzzleFlash: {fileID: 1481494863829372, guid: 90ede6b057f813143905c5709cb9df0a, type: 3}
+  hitMarker: {fileID: 1278410308571632, guid: 0dca392d0ad60af418c1bace1abde0c6, type: 3}
+  shootSound: {fileID: 0}
+  crosshair: {fileID: 0}
 --- !u!65 &575775863
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -563,7 +590,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8677f66c97d3a714e9b749feab673ac8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GunPickup
-  playerTag: Player
 --- !u!1 &738544143
 GameObject:
   m_ObjectHideFlags: 0
