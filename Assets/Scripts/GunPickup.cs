@@ -15,31 +15,35 @@ public class GunPickup : MonoBehaviour
     {
         if (!other.CompareTag(playerTag)) return;
 
-        // get inventory
         if (!other.TryGetComponent<PlayerInventoryHolder>(out var holder))
             return;
 
-        var inv = holder.Inventory;
+        InventorySimple inv = holder.Inventory;
 
-        // 1. require a coin
+        // must have a coin
         if (!inv.HasItem(ItemType.Coin))
         {
-            Debug.Log("Need a coin to pick up this weapon.");
+            Debug.Log("This debug should not be seen if u picked up the coin");
             return;
         }
 
-        // 2. spend ONE coin
+        // remove ONE coin
         RemoveOneCoin(inv);
 
-        // 3. give the weapon
-        var p = other.GetComponent<Player>();
-        if (p != null)
+        // find GunInHand object on the player and activate it
+        Transform child = other.transform.Find("GunInHand");
+        if (child != null)
         {
-            p.EnableWeapon();
+            child.gameObject.SetActive(true);
+            Debug.Log("GunPickup: Activated GuninHand");
+        }
+        else
+        {
+            Debug.LogWarning("GunPickup: Could not find 'GunInHand' under player!");
         }
 
-        // 4. destroy gun pickup
-        Destroy(gameObject);
+        // destroy this world gun
+        //Destroy(gameObject);
     }
 
     void RemoveOneCoin(InventorySimple inv)
@@ -48,8 +52,7 @@ public class GunPickup : MonoBehaviour
         {
             if (inv.slots[i] == ItemType.Coin)
             {
-                inv.slots[i] = ItemType.None;
-                inv.Notify();   // refresh UI
+                inv.ClearSlot(i); // calls Notify()
                 return;
             }
         }

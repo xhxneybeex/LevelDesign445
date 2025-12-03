@@ -24,7 +24,7 @@ public class Coin : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            Debug.Log("Press E to collect the coin.");
+            Debug.Log("Collected Coin");
 
             if(Input.GetKeyDown(KeyCode.E))
             {
