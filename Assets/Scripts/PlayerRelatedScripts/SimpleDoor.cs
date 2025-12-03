@@ -5,7 +5,7 @@ public class SimpleDoor : MonoBehaviour
 {
     [Header("Rotation")]
     public float openAngle = 90f;     // how far to rotate on Y
-    public float speed = 3f;          // how fast to rotate
+    public float duration = 1f;       // how long the swing should take
 
     [Header("Blocking Collider (optional)")]
     public Collider blocker;          // assign if you want it, otherwise leave null
@@ -28,27 +28,28 @@ public class SimpleDoor : MonoBehaviour
         if (busy) return;
 
         Debug.Log("SimpleDoor.Interact called on " + name);
-
-        StartCoroutine(Animate());
+        StartCoroutine(SwingDoor());
     }
 
-    IEnumerator Animate()
+    IEnumerator SwingDoor()
     {
         busy = true;
 
         if (!isOpen && blocker != null)
-        {
-            // about to OPEN → disable blocking if you use it
             blocker.enabled = false;
-        }
 
         Quaternion start = transform.localRotation;
         Quaternion target = isOpen ? closedRot : openRot;
 
-        float t = 0f;
-        while (t < 1f)
+        float elapsed = 0f;
+        while (elapsed < duration)
         {
-            t += Time.deltaTime * speed;
+            elapsed += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsed / duration);
+
+            // Smooth step easing for more natural swing
+            t = Mathf.SmoothStep(0f, 1f, t);
+
             transform.localRotation = Quaternion.Slerp(start, target, t);
             yield return null;
         }
@@ -56,7 +57,6 @@ public class SimpleDoor : MonoBehaviour
         transform.localRotation = target;
         isOpen = !isOpen;
 
-        // just closed → re-enable blocker
         if (!isOpen && blocker != null)
             blocker.enabled = true;
 
