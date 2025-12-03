@@ -10,7 +10,21 @@ public class InventorySimple : MonoBehaviour
     void Awake()
     {
         slotCount = Mathf.Max(1, slotCount);
-        slots = new ItemType[slotCount];   // default ItemType.None
+
+        if (slots == null || slots.Length != slotCount)
+        {
+            ItemType[] oldSlots = slots;
+            slots = new ItemType[slotCount];
+
+            if (oldSlots != null)
+            {
+                for (int i = 0; i < Mathf.Min(oldSlots.Length, slots.Length); i++)
+                {
+                    slots[i] = oldSlots[i];
+                }
+            }
+        }
+
         Notify();
     }
 
