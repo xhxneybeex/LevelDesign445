@@ -21,10 +21,11 @@ public class Destructible : MonoBehaviour
 
     public void DestroyCrate()
     {
-        // destructible
-        Instantiate(crateDestroyed, transform.position, Quaternion.identity);
-        
-        // original crate
+        GameObject destroyed = Instantiate(crateDestroyed, transform.position, transform.rotation);
+        destroyed.SetActive(true);
+
         Destroy(gameObject);
+        Destroy(destroyed, 5f);
     }
+
 }

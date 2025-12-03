@@ -75,7 +75,15 @@ public class GunController : MonoBehaviour
                             Quaternion.LookRotation(hitInfo.normal));
                         Destroy(hit, 1.0f);
                     }
+
+                    // Check if the hit object has a Destructible component
+                    Destructible destructible = hitInfo.collider.GetComponent<Destructible>();
+                    if (destructible != null)
+                    {
+                        destructible.DestroyCrate();
+                    }
                 }
+
             }
         }
         else
