@@ -7,8 +7,11 @@ public class GunController : MonoBehaviour
     [SerializeField] private int currentAmmo = 0;
     [SerializeField] private int maxAmmo = 30;
     [SerializeField] private float reloadTime = 2f;
+    [SerializeField] private float fireRate = 0.1f;
+    [SerializeField] private LayerMask hitLayers;
     private bool reloading = false;
-    private bool isEquipped = false; // <-- NEW FLAG
+    private bool isEquipped = false;
+    private float nextFireTime = 0f;
 
     [Header("Effects")]
     [SerializeField] private GameObject muzzleFlash = null;
@@ -24,12 +27,14 @@ public class GunController : MonoBehaviour
     {
         currentAmmo = maxAmmo;
         if (crosshair != null)
-            crosshair.SetActive(false); // hide until equipped
+            crosshair.SetActive(false);
+        if (muzzleFlash != null)
+            muzzleFlash.SetActive(false);
     }
 
     void Update()
     {
-        if (!isEquipped) return; // <-- only run if equipped
+        if (!isEquipped) return;
 
         Shoot();
 
@@ -46,24 +51,30 @@ public class GunController : MonoBehaviour
             if (muzzleFlash != null)
                 muzzleFlash.SetActive(true);
 
-            if (shootSound != null && !shootSound.isPlaying)
-                shootSound.Play();
-
-            currentAmmo--;
-            Debug.Log($"Ammo: {currentAmmo}/{maxAmmo}");
-
-            Ray rayOrigin = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
-            RaycastHit hitInfo;
-
-            if (Physics.Raycast(rayOrigin, out hitInfo))
+            if (Time.time >= nextFireTime)
             {
-                Debug.Log("Hit: " + hitInfo.collider.name);
+                nextFireTime = Time.time + fireRate;
 
-                if (hitMarker != null)
+                if (shootSound != null && !shootSound.isPlaying)
+                    shootSound.Play();
+
+                currentAmmo--;
+                Debug.Log($"Ammo: {currentAmmo}/{maxAmmo}");
+
+                Ray rayOrigin = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+                RaycastHit hitInfo;
+
+                if (Physics.Raycast(rayOrigin, out hitInfo, 100f, hitLayers))
                 {
-                    GameObject hit = Instantiate(hitMarker, hitInfo.point,
-                        Quaternion.LookRotation(hitInfo.normal));
-                    Destroy(hit, 1.0f);
+                    Debug.DrawLine(rayOrigin.origin, hitInfo.point, Color.red, 1f);
+                    Debug.Log("Hit: " + hitInfo.collider.name + " at " + hitInfo.point);
+
+                    if (hitMarker != null)
+                    {
+                        GameObject hit = Instantiate(hitMarker, hitInfo.point,
+                            Quaternion.LookRotation(hitInfo.normal));
+                        Destroy(hit, 1.0f);
+                    }
                 }
             }
         }
@@ -89,13 +100,12 @@ public class GunController : MonoBehaviour
 
     void OnGUI()
     {
-        if (!isEquipped) return; // only show UI when equipped
+        if (!isEquipped) return;
         GUI.Label(new Rect(10, 10, 200, 30), $"Ammo: {currentAmmo}/{maxAmmo}");
         if (reloading)
             GUI.Label(new Rect(10, 40, 200, 30), "Reloading...");
     }
 
-    // Call this when player picks up the gun
     public void Equip()
     {
         isEquipped = true;
@@ -103,7 +113,6 @@ public class GunController : MonoBehaviour
             crosshair.SetActive(true);
     }
 
-    // Call this when player drops/unequips the gun
     public void Unequip()
     {
         isEquipped = false;
