@@ -20,12 +20,17 @@ public class GunPickup : MonoBehaviour
 
         InventorySimple inv = holder.Inventory;
 
+        // Debug: show inventory contents
+        Debug.Log($"Inventory contents: {string.Join(", ", inv.slots)}");
+
         // must have a coin
         if (!inv.HasItem(ItemType.Coin))
         {
-            Debug.Log("This debug should not be seen if u picked up the coin");
-            return;
+            Debug.Log("Need a coin to pick up this gun.");
+            return; // Exit without destroying the gun
         }
+
+        Debug.Log("Coin found! Proceeding with pickup.");
 
         // remove ONE coin
         RemoveOneCoin(inv);
@@ -35,15 +40,15 @@ public class GunPickup : MonoBehaviour
         if (child != null)
         {
             child.gameObject.SetActive(true);
-            Debug.Log("GunPickup: Activated GuninHand");
+            Debug.Log("GunPickup: Activated GunInHand");
         }
         else
         {
             Debug.LogWarning("GunPickup: Could not find 'GunInHand' under player!");
         }
 
-        // destroy this world gun
-        //Destroy(gameObject);
+        // destroy this world gun only after successful pickup
+        Destroy(gameObject);
     }
 
     void RemoveOneCoin(InventorySimple inv)

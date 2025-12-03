@@ -551,7 +551,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.21267124, y: 0.30459175, z: 0.95518875}
   m_Center: {x: -0.0061559915, y: 0.08704824, z: -0.022405554}
---- !u!114 &614779031
+--- !u!114 &614779029
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -560,7 +560,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 614779025}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8677f66c97d3a714e9b749feab673ac8, type: 3}
+  m_Script: {fileID: 11500000, guid: e7c5e7e179f295f42b9a37f178fa936c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GunPickup
   playerTag: Player
@@ -692,18 +692,6 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5783933899989272137, guid: ccea61f9fb5a0ca4ba8439c582bffd36, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -6.52
-      objectReference: {fileID: 0}
-    - target: {fileID: 5783933899989272137, guid: ccea61f9fb5a0ca4ba8439c582bffd36, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.61
-      objectReference: {fileID: 0}
-    - target: {fileID: 5783933899989272137, guid: ccea61f9fb5a0ca4ba8439c582bffd36, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1.7
-      objectReference: {fileID: 0}
     - target: {fileID: 5787348104939306489, guid: ccea61f9fb5a0ca4ba8439c582bffd36, type: 3}
       propertyPath: m_Name
       value: Gun
@@ -774,7 +762,7 @@ PrefabInstance:
       addedObject: {fileID: 614779028}
     - targetCorrespondingSourceObject: {fileID: 5787905418217020475, guid: ccea61f9fb5a0ca4ba8439c582bffd36, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 614779031}
+      addedObject: {fileID: 614779029}
   m_SourcePrefab: {fileID: 100100000, guid: ccea61f9fb5a0ca4ba8439c582bffd36, type: 3}
 --- !u!1 &898886908
 GameObject:
