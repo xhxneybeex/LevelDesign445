@@ -27,10 +27,11 @@ public class GunController : MonoBehaviour
     {
         currentAmmo = maxAmmo;
         if (crosshair != null)
-            crosshair.SetActive(false);
+            crosshair.SetActive(isEquipped);
         if (muzzleFlash != null)
             muzzleFlash.SetActive(false);
     }
+
 
     void Update()
     {
