@@ -131,4 +131,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::KeyItemPickup
   keyType: 5
   playerTag: Player
-  pickupSound: {fileID: 0}
+  pickupSound: {fileID: 8300000, guid: 69e9994b774f166429c20253cb828cae, type: 3}
